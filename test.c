@@ -13,7 +13,7 @@ pthread_t *Students;		// N  number of threads running as students.
 int WorkingIndex = 0;
 int NoOfChairs = 0;
 
-//Declaraing of semaphores , mutex lock.
+//Declaraing of semaphores ,mutex lock.
 sem_t TeachingAsst_Sleep;
 sem_t Student_Sem;
 sem_t ChairsSem[3];
