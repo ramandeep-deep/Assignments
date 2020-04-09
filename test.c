@@ -1,3 +1,4 @@
+//Comments about program
 #include <pthread.h>		//Creating  POSIX threads.
 #include <time.h>			//Waiting for  random  amount of time.
 #include <unistd.h>			//Thread calls sleep for specific number of seconds.
@@ -84,7 +85,7 @@ void *Teachingasst_Activity()
 			//TeachingAssistent gets next student on the chair.
 			sem_post(&ChairsSem[WorkingIndex]);
 			NoOfChairs--;
-			printf("Student leaves the chairs.chairs lefted are %d\n", 3 -NoOfChairs);
+			printf("Student leaves the chairs.left out chairs are %d\n", 3 -NoOfChairs);
 			WorkingIndex = (WorkingIndex + 1) % 3;
 			pthread_mutex_unlock(&ChairObtained);
 			// unlocking
@@ -119,13 +120,13 @@ void *Student_Activity(void *threadID)
 			else
 				printf("Student %ld sitting on the chair waiting for the TeachingAssistent to finish. \n", (long)threadID);
 
-			// locking
+			// lock ChairObtained
 			pthread_mutex_lock(&ChairObtained);
 			int index = (WorkingIndex +NoOfChairs) % 3;
 			NoOfChairs++;
 			printf("Student sits on  the chair.Chairs Remaining: %d\n", 3 -NoOfChairs);
 			pthread_mutex_unlock(&ChairObtained);
-			// unlocking
+			// unlock ChairObtained
 
 			sem_wait(&ChairsSem[index]);		//Student leaves his/her chair.
 			printf("\t Student %ld is getting help from the TeachingAssistent. \n", (long)threadID);
