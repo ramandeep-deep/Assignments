@@ -6,7 +6,7 @@
 #include <time.h> 
 typedef long long ll; // ll shorhand for long long will be used further
 
-int randomFlag = 0;   //false
+int randomFlag = 0;   // false
 void showInputs(ll *VirtualMemoryPages, ll NoOfPages, ll NoOfFrames);
 void createPattern();
 int findingPageHit(ll *FrameList, ll NoOfFrames, ll target)
