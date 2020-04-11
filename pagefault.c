@@ -1,9 +1,9 @@
 /*...............code by Ramandeep Kaur...................*/
 
-#include <stdio.h>    
-#include <stdlib.h>  
-#include <string.h> 
-#include <time.h> 
+#include <stdio.h>   //It is used for input and output. 
+#include <stdlib.h>  // standard library and contains declaration of malloc() and free()
+#include <string.h>  //used for variables and functions
+#include <time.h>   // headerfile for functions of date and time
 typedef long long ll; // ll shorhand for long long will be used further
 
 int randomFlag = 0;   // false
