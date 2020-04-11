@@ -14,18 +14,18 @@ pthread_t *Students;		// N  number of threads running as students.
 int WorkingIndex = 0;
 int NoOfChairs = 0;
 
-//Declaraing of semaphores ,mutex lock.
-sem_t TeachingAsst_Sleep;
+
+sem_t TeachingAsst_Sleep; //Declaration of semaphores,mutex lock.
 sem_t Student_Sem;
 sem_t ChairsSem[3];
 pthread_mutex_t ChairObtained;
-//Declaring  functions.
-void *Teachingasst_Activity();
+
+void *Teachingasst_Activity();// Declaring functions
 void *Student_Activity(void *threadID);
 
 int main(int argc, char* argv[])
 {
-	int NumberOfStudents;		//a variable is taken from the user for creating student threads.
+	int NumberOfStudents;	//a variable is taken from the user for creating student threads.
 	int D_id;
 	srand(time(NULL));
 
@@ -33,7 +33,7 @@ int main(int argc, char* argv[])
 	sem_init(&TeachingAsst_Sleep, 0, 0);
 	sem_init(&Student_Sem, 0, 0);
 	for(D_id = 0; D_id < 3; ++D_id)			// Array of three Semaphores.
-		sem_init(&ChairsSem[D_id], 0, 0);
+	sem_init(&ChairsSem[D_id], 0, 0);
 
 	pthread_mutex_init(&ChairObtained, NULL);
 	
@@ -53,12 +53,12 @@ int main(int argc, char* argv[])
 	//creating TeachingAssistent thread and N student threads.
 	pthread_create(&TeachingAsst, NULL, Teachingasst_Activity, NULL);	
 	for(D_id = 0; D_id < NumberOfStudents; D_id++)
-		pthread_create(&Students[D_id], NULL, Student_Activity,(void*) (long)D_id);
+	pthread_create(&Students[D_id], NULL, Student_Activity,(void*) (long)D_id);
 
 	//Waiting ( for TeachingAssistent thread and N student threads.)
 	pthread_join(TeachingAsst, NULL);
 	for(D_id = 0; D_id < NumberOfStudents; D_id++)
-		pthread_join(Students[D_id], NULL);
+	pthread_join(Students[D_id], NULL);
 
 	//Freeing the allocated memory
 	free(Students); 
