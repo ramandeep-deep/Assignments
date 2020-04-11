@@ -87,5 +87,13 @@ void showInputs(ll *VirtualMemoryPages, ll NoOfPages, ll NoOfFrames)
   for(int k = 0; k < NoOfPages; k++)
   printf("%lld ", VirtualMemoryPages[k]);
   printf("\nNo. of Frames:\t\t: %lld", NoOfFrames);
-	         
+createPattern();	         
 }
+void createPattern()
+{
+	    printf("\n");
+	        for(int k = 0; k < 50; k++)
+			        printf("*");
+		    printf("\n");
+}
+
